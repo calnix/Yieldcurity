@@ -90,8 +90,9 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 > Note: if you need to add a comment to explain what is that you are doing, take a moment to consider if you should do it differently.
 
 ---
+<br>
 
---
+</br>
 
 
 # Other Points
