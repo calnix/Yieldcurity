@@ -48,7 +48,7 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
 
 #### Some general guidelines:
 - Construct a mental model of what you expect the contracts to look like before checking out the code. 
-    - Compare the architecture to your mental model. Look into areas that are surprising or deviate from expectations.
+    - Investigate areas that are surprising or deviate from expectations.
 - Flesh out the risk surface (i.e. external contract interactions, adversarial actions).[^1] 
     - Are new attack vectors introduced (if so, have they been mitigated)?
     - Are prior mitigated attack vectors, now unmitigated? 
@@ -64,7 +64,6 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
     - Are all important edge cases and states being tested?
     - For bug fixes, is there a new test that would have caught the bug?
     - If there are any issues that should hold up merge, mark the PR as Changes Requested.
-    - Approve If completely comfortable with the changes.
 
 - After reviewing the code changes, see the [Code](/yieldcurity_standard.md#code), [Contract](/yieldcurity_standard.md#contract), and [DeFi](/yieldcurity_standard.md#defi) checklists.
 
