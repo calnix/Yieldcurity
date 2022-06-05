@@ -170,8 +170,6 @@ Therefore, in external calls to functions (when passing parameter type string), 
 * using calldata -> will simply reference the pre-allocated memory location
 * using memory -> will create a copy of the parameter in a new memory location and then pass it into the function. 
 
-Unnecessary in making a fresh copy in a new memory location (which is what setting it to 'memory') does.
-
 **Yes:**
 
 When using `(string calldata name)`, the parameter would be passed directly into `delete holder[name]`, without making a copy, thereby saving gas.
