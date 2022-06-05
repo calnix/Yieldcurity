@@ -164,14 +164,13 @@ For functions that would be called externally, use calldata over memory when dec
 > Use memory if you want to be able to manipulate the parameters, and calldata when the parameter remains immutable.
 
 **Explanation:**
+
 calldata contains parameters of a function as allocated by the external caller.
 Therefore, in external calls to functions (when passing parameter type string), opt to use `calldata string`, instead of `memory string`.
 * using calldata -> will simply reference the pre-allocated memory location
 * using memory -> will create a copy of the parameter in a new memory location and then pass it into the function. 
 
 Unnecessary in making a fresh copy in a new memory location (which is what setting it to 'memory') does.
-
-##### Example: release() is called externally
 
 **Yes:**
 
