@@ -106,7 +106,7 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 
 ### Use of underscore
 
-In general, avoid the use of _ in variable or fn names. There are only two exceptions:
+In general, avoid the use of `_` in variable or fn names. There are only two exceptions:
 
 1. If the var or fn name shadows an existing name, then use a trailing underscore _
 Example: 
@@ -131,7 +131,7 @@ function _internalCheck() internal {}
 
 ### Compact Strings
 
-Ensure that your strings do not exceed **32 characters**. For example, in require statements. 
+Ensure that your strings do not exceed **32 characters**. For example, in `require` statements. 
 
 **Explanation:**
 * EVM stores data in 32 byte (256 bits) 'buckets' or 'slots'.
@@ -150,6 +150,7 @@ private - can be accessed only from this contract
 ```
 
 **Explanation:**
+
 The arguments for using private over internal are mostly that we should use private in situations where we definitely never want any outside contract to call this fn/var, and so don’t want to introduce a footgun. However, it is just as likely you may end up needing the var from an inheriting contract in an unknown way. 
 
 Conversely, the risk of an internal fn being overridden and causing a problem is the responsibility of the code author.  
@@ -217,6 +218,7 @@ The approach should to be to load the storage variable into memory, then read fr
 This saves gas.
 
 **Explanation:**
+
 Both `debts[user]` & `deposits[user]` are mappings which are storage variables. 
 Repeatedly calling storage variables within a function becomes costly:
 * A single SLOAD costs 800 gas, and is unavoidable the first time. 
