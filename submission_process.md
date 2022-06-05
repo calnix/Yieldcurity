@@ -99,7 +99,7 @@ This is to assist not only the reviewer, but also to ensure that the code author
 > Example: fn A in contractB.sol makes a call to someexternalcontract.sol
 
 
-### Contracts
+#### Contracts
 > This section serves as a brief for the reviewer, code author is to introduce contracts and elaborate on salient points
 
 > ContractA.sol -> description + points
@@ -109,7 +109,7 @@ This is to assist not only the reviewer, but also to ensure that the code author
 > Reference: See section 'New contracts and areas of risk'[^2]
 
 
-### Testing
+#### Testing
 > Elaborate on your testing approach - assumptions made, concerns and any caveats.
 
 > Map your state inheritance testing flow. This could be in the form of a text tree or an illustrated diagram (excalidraw/draw.io) 
