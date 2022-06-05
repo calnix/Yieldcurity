@@ -122,7 +122,7 @@ This is to assist not only the reviewer, but also to ensure that the code author
 **Example:** 
 ```
 (StateZeroTest) 
-(actions available)
+(actions available: deposit, withdraw, redeem)
 - negative tests
 - adversarial tests
 - positive tests
