@@ -91,18 +91,19 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 
 ---
 
-
+--
+--
 # Other Points
 
-## uint over uint256
+### uint over uint256
 * While both are equivalent, uint256 should always be used over uint.
 
 
-##  TransferHelper.sol
+###  TransferHelper.sol
 * TransferHelper library(from yield-utils-v2) and its safe transfer methods should be used when ERC20 is involved, over the native methods.[^3]
 
 
-## Use of underscore
+### Use of underscore
 
 In general, avoid the use of _ in variable or fn names. There are only two exceptions:
 
@@ -127,7 +128,7 @@ function _internalCheck() internal {}
 
 
 
-## Compact Strings
+### Compact Strings
 
 Ensure that your strings do not exceed **32 characters**. For example, in require statements. 
 
@@ -138,7 +139,7 @@ Ensure that your strings do not exceed **32 characters**. For example, in requir
 * Each character in a string is a UTF-8 encoded byte, meaning that your strings can be up to 32 characters in length.
 
 
-## Private vs Internal
+### Private vs Internal
 
 We generally do not use private, always favouring internal.
 
@@ -154,7 +155,7 @@ Conversely, the risk of an internal fn being overridden and causing a problem is
 Additionally, we should strive to design contracts that are flexible enough for someone to import it directly and use it as they see fit. 
 
 
-## calldata versus memory
+### calldata versus memory
 For functions that would be called externally, use calldata over memory when declaring parameters(string, bytes) in function definition.
 * Saves gas as calldata is cheaper than memory, and a duplicate is not created. 
 * This is contingent on that fact that the parameter remains immutable throughout the function.
@@ -209,7 +210,7 @@ contract X {
 
 
 
-## Caching sload into mload
+### Caching sload into mload
 Repeated calls to storage variables within the same function should be avoided, if we are only reading its value.
 The approach should to be to load the storage variable into memory, then read from memory.
 This saves gas.
