@@ -171,7 +171,7 @@ Therefore, in external calls to functions (when passing parameter type string), 
 
 Unnecessary in making a fresh copy in a new memory location (which is what setting it to 'memory') does.
 
-**Example: release() is called externally**
+##### Example: release() is called externally
 
 **Yes:**
 
