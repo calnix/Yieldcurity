@@ -40,7 +40,7 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
 - Ideally the review should be completed within 3 days of being notified (faster if priority tagged).
 - Refer to the [Yield smart contract code quality standards](/yieldcurity_standard.md) code quality standards.
 
-###### Make note of the kinds of variables that affect the feature:
+##### Make note of the kinds of variables that affect the feature:
 - User input
 - Existing state
 - Other protocols
@@ -119,7 +119,8 @@ This is to assist not only the reviewer, but also to ensure that the code author
 
 > WHY: Offers a high-level risk surface of the testing coverage. Implementer be certain they have not missed any possible states. Auditor quickly appreciate what has been tested, and spot any gaps.  
 
-**_Example:_** 
+**Example:** 
+```
 (StateZeroTest) 
 (actions available)
 - negative tests
@@ -130,7 +131,7 @@ This is to assist not only the reviewer, but also to ensure that the code author
 (StateSomeStateTest)
 (actions available)
 - etc,...
-
+```
 
 #### Open items not included at submission of this pr:
  - [ ] Item A
@@ -148,8 +149,6 @@ This is to assist not only the reviewer, but also to ensure that the code author
  - [ ] Approver
 
 > Mention whom signed off on this PR and provide verification evidence (screenshot, etc)
-
-> Alternatively, reviewer can edit this and sign-off directly.
 
 
 [^1]: https://github.com/runtimeverification/verified-smart-contracts/wiki/List-of-Security-Vulnerabilities

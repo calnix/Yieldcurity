@@ -177,11 +177,12 @@ Opinionated **security**, **code quality** standards, and **code review policies
 - `T6` - Internal functions should be inherited by a mock contract for testing.
 - `T7` - Fuzz testing should be used for functions that take in some conditional range of values - as opposed to conveniently testing with a singular data point. 
 
-#### Testing KIV/considerations:
+#### Other points of consideration:
+(do we want to include these?)
 - Use coverage tools (like Foundry's coverage tool) to see how well your tests cover your code.
-- Run slither/mythix
+- Run Slither/Mythril
 - Foundry Integration tests
-- Foundry CI & Slither CI are helpful. If you use forge-template you get both out of the box
+- Foundry CI & Slither CI are helpful. If you use forge-template you get both out of the box.
 
 ## Deployment
 
@@ -197,9 +198,9 @@ Ensure deployment goes exactly as planned by writing a test testing every state 
 
 ## Post-Deployment
 
-- Consider if this feature/contract needs an audit. 
+- Consider if this an audit is required.
     - Have the complexity & code size inform if and who should audit your contracts.
-- Setup monitoring service using (Tenderly)[https://tenderly.co/]; setup in-line with the Incident Response Plan.
+- Setup monitoring service using [Tenderly](https://tenderly.co/); setup in-line with the Incident Response Plan.
 
 
 
