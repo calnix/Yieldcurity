@@ -89,6 +89,7 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 * Useful for clarifying anything that is surprising, complicated, or risky.
 > Note: if you need to add a comment to explain what is that you are doing, take a moment to consider if you should do it differently.
 
+*** 
 <br>
 
 </br>
@@ -170,9 +171,10 @@ Therefore, in external calls to functions (when passing parameter type string), 
 
 Unnecessary in making a fresh copy in a new memory location (which is what setting it to 'memory') does.
 
-Example: release() is called externally
+**Example: release() is called externally**
 
 **Yes:**
+
 When using `(string calldata name)`, the parameter would be passed directly into `delete holder[name]`, without making a copy, thereby saving gas.
 ```solidity
     function release(string calldata name) public {
@@ -183,6 +185,7 @@ When using `(string calldata name)`, the parameter would be passed directly into
 ```
 
 **No:**
+
 When using `(string memory name)`, a copy of the parameter is passed into `delete holder[name]`:
 ```solidity
     function release(string memory name) public {
@@ -193,6 +196,7 @@ When using `(string memory name)`, a copy of the parameter is passed into `delet
 ```
 
 **Gotcha!** 
+
 If you pass in a string (or bytes) from a different internal function where you had just created that string in memory, then you can't use calldata. 
 ```solidity
 contract X {
