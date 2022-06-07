@@ -168,7 +168,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
     }
 ```
 
-For other comments like explaining complexities that do not fit readily into any of the tags, consider using `Note`.
+* For other comments like explaining complexities that do not fit readily into any of the tags, consider using `Note`.
 
 **For state variables meaningfully apply (@dev, @notice) tags, like so:**
 
@@ -185,8 +185,10 @@ For other comments like explaining complexities that do not fit readily into any
 ```
 
 #### In-line commenting
+
 * Every line of assembly should be clearly documented, for example, unchecked.
 * Useful for clarifying anything that is surprising, complicated, or risky.
+
 > Note: if you need to add a comment to explain what is that you are doing, take a moment to consider if you should do it differently.
 
 *** 
