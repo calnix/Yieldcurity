@@ -10,7 +10,8 @@ Storage in Ethereum is a key-value store with keys and values of 32 bytes each. 
 
 ![](/docs/imgs/2022-06-07-23-41-46.png)
 
-Multiple contiguous items that need less than 32 bytes are packed into a single storage slot if possible, according to the following rules:
+**Multiple contiguous items that need less than 32 bytes are packed into a single storage slot if possible, according to the following rules:**
+
 - The first item in a storage slot is stored lower-order aligned.
 - Value types use only as many bytes as are necessary to store them.
 - If a value type does not fit the remaining part of a storage slot, it is stored in the next storage slot.
@@ -21,10 +22,11 @@ Multiple contiguous items that need less than 32 bytes are packed into a single 
 
 Use the Tight Variable Packing pattern when it is beneficial to use reduced-size type (e.g. uint64), when dealing with storage values because the compiler will pack multiple elements into a single storage slot.
 
-- However, this is only sensible if all the variables in that slot are going to be used as a group (read/write) operation (i.e. debt and deposit values).
+However, this is only sensible if all the variables in that slot are going to be used as a group (read/write) operation (i.e. debt and deposit values).
+
 - **If you are not reading or writing all the values in a slot at the same time, this can have the opposite effect**
     - When one value is written to a multi-value storage slot, the storage slot has to be read first and then combined with the new value such that other data in the same slot is not destroyed.
-- When using elements that are smaller than 32 bytes, your contract’s gas usage may be higher. This is because the EVM operates on 32 bytes at a time. Therefore, if the element is smaller than that, the EVM must use more operations in order to reduce the size of the element from 32 bytes to the desired size.
+- Additionally, when using elements that are smaller than 32 bytes, your contract’s gas usage may be higher. This is because the EVM operates on 32 bytes at a time. Therefore, if the element is smaller than that, the EVM must use more operations in order to reduce the size of the element from 32 bytes to the desired size.
 
 ## Implementation
 
