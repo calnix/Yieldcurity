@@ -186,10 +186,40 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 
 #### In-line commenting
 
-* Every line of assembly should be clearly documented, for example, unchecked.
+* Useful for clarifying anything that is surprising, complicated, or risky.
+* Every line of assembly should be clearly documented, as well as unchecked blocks.
+
+```solidity
+        // Override orderHashes length to zero after memory has been allocated.
+        assembly {
+            mstore(orderHashes, 0)
+        }
+
+        // Skip overflow checks as all for loops are indexed starting at zero.
+        unchecked {
+            // Iterate over each order.
+            for (uint256 i = 0; i < totalOrders; ++i) {
+                // Retrieve the current order.
+                AdvancedOrder memory advancedOrder = advancedOrders[i];
+
+                // Determine if max number orders have already been fulfilled.
+                if (maximumFulfilled == 0) {
+                    // Mark fill fraction as zero as the order will not be used.
+                    advancedOrder.numerator = 0;
+
+                    // Update the length of the orderHashes array.
+                    assembly {
+                        mstore(orderHashes, add(i, 1))
+                    }
+
+                    // Continue iterating through the remaining orders.
+                    continue;
+                }
+```
+
 * Useful for clarifying anything that is surprising, complicated, or risky.
 
-> Note: if you need to add a comment to explain what is that you are doing, take a moment to consider if you should do it differently.
+> Note: When adding in-line comments to explain the intricacies of the functionality you coded, take a moment to consider if there exists an alternate simpler approach with less abstraction.
 
 *** 
 <br>
