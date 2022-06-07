@@ -229,7 +229,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 
 ### Private vs Internal
 
-We generally do not use private, always favouring internal.
+* We generally do not use private, always favouring internal.
 
 **Explanation:**
 
@@ -244,7 +244,7 @@ Additionally, we should strive to design contracts that are flexible enough for 
 
 ### Use of underscore
 
-In general, avoid the use of `_` in variable or function names. There are only two exceptions:
+* Avoid the use of `_` in variable or function names. There are only two exceptions:
 
 **1. If the var or fn name shadows an existing name, then use a trailing underscore _**
 
