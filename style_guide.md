@@ -265,6 +265,21 @@ function _internalCheck() internal {}
 }
 ```
 
+## Solidity Patterns
+
+
+
+
+
+
+* **Economic Patterns**
+  * [**String Equality Comparison**](/docs/string_equality_comparison.md): Check for the equality of two provided strings in a way that minimizes average gas consumption for a large number of different inputs.
+  * [**Tight Variable Packing**](/docs/tight_variable_packing.md): Optimize gas consumption when storing or loading statically-sized variables.
+  * [**Memory Array Building**](./memory_array_building.md): Aggregate and retrieve data from contract storage in a gas efficient way.
+
+
+
 [^1]: https://journal.stuffwithstuff.com/2016/06/16/long-names-are-long/
 [^2]: https://docs.soliditylang.org/en/latest/natspec-format.html#natspec
 [^3]: https://soliditydeveloper.com/safe-erc20
+
