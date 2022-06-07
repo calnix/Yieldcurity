@@ -24,7 +24,7 @@
 - Subsequent to this, reviewers may arrange for a follow-up video call if needed.
 - Upload video to Google drive folder: _Google drive link_ (Filename synthax: PR_name_ddmmyy)
 
-###### Recording Tips
+##### Recording Tips
 
 - Breakdown the walkthrough into multiple parts and record them individually - this makes it an easier process for yourself.
 - Approach the filming process as if you were doing a video tutorial: use of annotations, callouts, and other call to actions features.
@@ -63,7 +63,7 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
 - Other protocols
 - Time
 
-#### Some general guidelines:
+#### General guidelines:
 
 - Construct a mental model of what you expect the contracts to look like before checking out the code.
     - Investigate areas that are surprising or deviate from expectations.
