@@ -221,11 +221,6 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 
 > Note: When adding in-line comments to explain the intricacies of the functionality you coded, take a moment to consider if there exists an simpler alternative approach with less abstraction.
 
-*** 
-<br>
-
-</br>
-
 ## Other Points
 
 ### uint not uint256
