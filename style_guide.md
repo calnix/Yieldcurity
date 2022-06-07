@@ -125,7 +125,7 @@ In particular, observe the examples laid out in [Local and State Variable Names]
 
 ## Code Comments
 
-#### NatSpec
+### NatSpec
 
 Add NatSpec in a sensible fashion for contracts, functions and state variables[^2].
 
@@ -184,7 +184,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
     uint256 public constant fee = 1000; 
 ```
 
-#### In-line commenting
+### In-line commenting
 
 * Useful for clarifying anything that is surprising, complicated, or risky.
 * Every line of assembly should be clearly documented, as well as unchecked blocks.
