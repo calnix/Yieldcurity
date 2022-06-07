@@ -190,31 +190,31 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 * Every line of assembly should be clearly documented, as well as unchecked blocks.
 
 ```solidity
-        // Override orderHashes length to zero after memory has been allocated.
-        assembly {
-            mstore(orderHashes, 0)
-        }
+    // Override orderHashes length to zero after memory has been allocated.
+    assembly {
+        mstore(orderHashes, 0)
+    }
 
-        // Skip overflow checks as all for loops are indexed starting at zero.
-        unchecked {
-            // Iterate over each order.
-            for (uint256 i = 0; i < totalOrders; ++i) {
-                // Retrieve the current order.
-                AdvancedOrder memory advancedOrder = advancedOrders[i];
+    // Skip overflow checks as all for loops are indexed starting at zero.
+    unchecked {
+        // Iterate over each order.
+        for (uint256 i = 0; i < totalOrders; ++i) {
+            // Retrieve the current order.
+            AdvancedOrder memory advancedOrder = advancedOrders[i];
 
-                // Determine if max number orders have already been fulfilled.
-                if (maximumFulfilled == 0) {
-                    // Mark fill fraction as zero as the order will not be used.
-                    advancedOrder.numerator = 0;
+            // Determine if max number orders have already been fulfilled.
+            if (maximumFulfilled == 0) {
+                // Mark fill fraction as zero as the order will not be used.
+                advancedOrder.numerator = 0;
 
-                    // Update the length of the orderHashes array.
-                    assembly {
-                        mstore(orderHashes, add(i, 1))
-                    }
-
-                    // Continue iterating through the remaining orders.
-                    continue;
+                // Update the length of the orderHashes array.
+                assembly {
+                    mstore(orderHashes, add(i, 1))
                 }
+
+                // Continue iterating through the remaining orders.
+                continue;
+            }
 ```
 
 * Useful for clarifying anything that is surprising, complicated, or risky.
