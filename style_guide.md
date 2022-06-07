@@ -275,7 +275,7 @@ function _internalCheck() internal {}
 * **Economic Patterns**
   * [**String Equality Comparison**](/docs/string_equality_comparison.md): Check for the equality of two provided strings in a way that minimizes average gas consumption for a large number of different inputs.
   * [**Tight Variable Packing**](/docs/tight_variable_packing.md): Optimize gas consumption when storing or loading statically-sized variables.
-  * [**Memory Array Building**](./memory_array_building.md): Aggregate and retrieve data from contract storage in a gas efficient way.
+  * [**Memory Array Building**](/docs/memory_array_building.md): Aggregate and retrieve data from contract storage in a gas efficient way.
 
 
 
