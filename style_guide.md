@@ -199,6 +199,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
     unchecked {
         // Iterate over each order.
         for (uint256 i = 0; i < totalOrders; ++i) {
+          
             // Retrieve the current order.
             AdvancedOrder memory advancedOrder = advancedOrders[i];
 
@@ -217,9 +218,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
             }
 ```
 
-* Useful for clarifying anything that is surprising, complicated, or risky.
-
-> Note: When adding in-line comments to explain the intricacies of the functionality you coded, take a moment to consider if there exists an alternate simpler approach with less abstraction.
+> Note: When adding in-line comments to explain the intricacies of the functionality you coded, take a moment to consider if there exists an simpler alternative approach with less abstraction.
 
 *** 
 <br>
