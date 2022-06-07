@@ -21,21 +21,64 @@ Inside each contract, library or interface, use the following order:
 5. Events
 6. Modifiers
 7. Functions
+8. Custom Errors (for discussion)
 
-Functions and declarations should be grouped according to their visibility. The exception to this is that an alternative grouping is sensible to reflect context, i.e. functions are related in some manner.
+Fuctions and declarations should be grouped in a manner so as to reflect their contextual relations, as to the degree that is possible. Judicious use of headers would be appreciated.
+
+##### Example
+
+```solidity
+    /*////////////////////////////////////////////////////////////////////////*/
+    /*                           COLLATERALIZATION                            */  
+    /*////////////////////////////////////////////////////////////////////////*/
+
+    
+    ///@dev Calculates minimum collateral required of a user to support existing debts, at current market prices 
+    ///@param user Address of user 
+    function minimumCollateral(address user) public view returns(uint256 collateralAmount) {
+        collateralAmount = _debtToCollateral(debts[user]);
+    }
+
+
+    ///@notice Price is returned as an integer extending over it's decimal places
+    ///@dev Calculates minimum collateral required to support given amount of debt, at current market prices 
+    ///@param debtAmount Amount of debt
+    function _debtToCollateral(uint256 debtAmount) internal view returns(uint256 collateralAmount) {
+        (,int price,,,) = priceFeed.latestRoundData();
+        collateralAmount = debtAmount * uint256(price) / scalarFactor;
+        collateralAmount = _scaleDecimals(collateralAmount, collateralDecimals, debtDecimals);
+    }
+
+    ///@notice Rebasement is necessary when utilising assets with divergering decimal precision
+    ///@dev For rebasement of the trailing zeros which are representative of decimal precision
+    function _scaleDecimals(uint256 integer, uint256 from, uint256 to) internal pure returns(uint256) {
+        //downscaling | 10^(to-from) => 10^(-ve) | cant have negative powers, bring down as division => integer / 10^(from - to)
+        if (from > to ){ 
+            return integer / 10**(from - to);
+        } 
+        // upscaling | (to >= from) => +ve
+        else {  
+            return integer * 10**(to - from);
+        }
+    }
+```
 
 #### Multiple contracts in the same file
+
 * Each smart contract should be in its own file.
 
 #### Import Statements
+
 * Import statements must always be placed at the top of the file.
 * They should be explicitly named import statements, not file level imports.
+
 ```solidity
 Import { Something } from “./MySolidityFile.sol”;
 ```
 
-## Naming Conventions
-Keep names as short as possible, wihtout losing precision or clarity in communicating its intent.[^1]
+## Naming Convention
+Keep names as short as possible, without losing precision or clarity in communicating its intent.[^1]
+In particular, observe the examples laid out in [Local and State Variable Names](/style_guide.md#local-and-state-variable-names).
 
 #### Contract and Library Names
 * Contracts and libraries must be named using the CapWords style. 
@@ -59,7 +102,7 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 #### Local and State Variable Names
 - Use mixedCase
   * `totalSupply`, `balancesOf`, `creatorAddress`.
-- Variable names that refer to contracts are in the form: 
+- Variable names that refer to contracts are in the form:
   * `daiToken`, `yvDaiToken`, `sharesToken`.
 - Token amounts are to be referred as the contract variable, without `Token`, plus a word denoting the action undetaken with the token. In/Out will be the preferred words to denote tokens being transferred into/out of the contract. 
   * `daiIn`, `daiOut`, `sharesMinted`, `yvDaiReceived`.
@@ -80,11 +123,66 @@ Keep names as short as possible, wihtout losing precision or clarity in communic
 * Enums, in the style of simple type declarations, must be named using the CapWords style. 
 * Examples: `TokenGroup`, `Frame`, `HashStyle`.
 
-
 ## Code Comments
 
 #### NatSpec
-* Add NatSpec in a sensible fashion for contracts, functions and state variables[^2].
+
+Add NatSpec in a sensible fashion for contracts, functions and state variables[^2].
+
+**For contracts have an opening consisting of tags (@title, @author, @dev, @notice), before the contract declaration, like so:**
+
+```solidity
+//SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.13;
+
+import {TransferHelper} from "lib/yield-utils-v2/contracts/token/TransferHelper.sol";
+
+/**
+@title Flash Loan Vault
+@author Calnix
+@dev Contract allows users to exchange a pre-specified ERC20 token for some other wrapped ERC20 tokens.
+@notice Wrapped tokens will be burned, when user withdraws their deposited tokens.
+*/
+
+contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
+```
+
+**For functions meaningfully apply (@dev, @notice, @param) tags, like so:**
+
+```solidity
+    /// @dev Burns shares from owner and sends exactly assets of underlying tokens to receiver; based on the exchange rate.
+    /// @param assets The amount of underlying tokens to withdraw
+    /// @param receiver Address of receiver of underlying tokens - DAI
+    /// @param owner Address of owner of Fractional Wrapper shares - yvDAI
+    function withdraw(uint256 assets, address receiver, address owner) external returns(uint256 shares) {
+        shares = convertToShares(assets);
+        
+        if(msg.sender != owner){
+            _decreaseAllowance(owner, shares);
+        }
+
+        burn(owner, shares);
+        
+        asset.safeTransfer(receiver, assets);
+        emit Withdraw(msg.sender, receiver, owner, assets, shares);
+    }
+```
+
+For other comments like explaining complexities that do not fit readily into any of the tags, consider using `Note`.
+
+**For state variables meaningfully apply (@dev, @notice) tags, like so:**
+
+```solidity
+    ///@dev Attach library for safetransfer methods
+    using TransferHelper for IERC20;
+
+    ///@dev The keccak256 hash of "ERC3156FlashBorrower.onFlashLoan"
+    bytes32 public constant CALLBACK_SUCCESS = keccak256("ERC3156FlashBorrower.onFlashLoan");
+
+    ///@notice Fee is a constant 0.1%
+    ///@dev 1000 == 0.1%  (1 == 0.0001 %)
+    uint256 public constant fee = 1000; 
+```
 
 #### In-line commenting
 * Every line of assembly should be clearly documented, for example, unchecked.
@@ -235,7 +333,7 @@ function liquidation(address user) external onlyOwner {
 ```
 The gas-efficient approach is to store the storage variable in memory, and load it from there, which is much cheaper (around 3 gas).
 * Write from storage to memory once (SLOAD + MSTORE = 803 gas), then read the memory variable twice (MLOAD + MLOAD) = 6 gas
-* SLOAD + MSTORE = 803 
+* SLOAD + MSTORE = 803
 * MLOAD + MLOAD = 6 gas
 * Total = 809 gas
 
