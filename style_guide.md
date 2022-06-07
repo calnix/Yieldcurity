@@ -3,6 +3,7 @@
 This guide is intended to provide coding conventions for writing solidity code. This guide should be thought of as an evolving document that will change over time as useful conventions are found and old conventions are rendered obsolete.
 
 ## Code Layout
+
 1. Pragma statement
 2. Import statements
 3. Interfaces
@@ -10,6 +11,7 @@ This guide is intended to provide coding conventions for writing solidity code. 
 5. Contract
 
 #### Code Order
+
 Inside each contract, library or interface, use the following order:
 
 1. Library declarations (using statements)
@@ -144,17 +146,12 @@ Ensure that your strings do not exceed **32 characters**. For example, in `requi
 
 We generally do not use private, always favouring internal.
 
-```
-internal - only this contract and contracts deriving from it can access
-private - can be accessed only from this contract
-```
-
 **Explanation:**
 
-The arguments for using private over internal are mostly that we should use private in situations where we definitely never want any outside contract to call this fn/var, and so don’t want to introduce a footgun. However, it is just as likely you may end up needing the var from an inheriting contract in an unknown way. 
+The arguments for using private over internal are mostly that we should use private in situations where we definitely never want any outside contract to call this fn/var, and so don’t want to introduce a footgun. However, it is just as likely you may end up needing the var from an inheriting contract in an unknown way.
 
 Conversely, the risk of an internal fn being overridden and causing a problem is the responsibility of the code author.  
-Additionally, we should strive to design contracts that are flexible enough for someone to import it directly and use it as they see fit. 
+Additionally, we should strive to design contracts that are flexible enough for someone to import it directly and use it as they see fit.
 
 
 ### calldata versus memory
