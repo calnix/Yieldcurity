@@ -187,6 +187,7 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 ### In-line commenting
 
 * Useful for clarifying anything that is surprising, complicated, or risky.
+* Consider illustrating with equations, diagram links and ASCII art.
 * Every line of assembly should be clearly documented, as well as unchecked blocks.
 
 ```solidity
@@ -225,22 +226,24 @@ contract FlashLoanVault is ERC20Mock, IERC3156FlashLender {..}
 
 </br>
 
-# Other Points
+## Other Points
 
-### uint over uint256
+### uint not uint256
+
 * While both are equivalent, uint256 should always be used over uint.
 
 
-###  TransferHelper.sol
+### TransferHelper.sol
+
 * TransferHelper library(from yield-utils-v2) and its safe transfer methods should be used when ERC20 is involved, over the native methods.[^3]
 
 
 ### Use of underscore
 
-In general, avoid the use of `_` in variable or fn names. There are only two exceptions:
+In general, avoid the use of `_` in variable or function names. There are only two exceptions:
 
-1. If the var or fn name shadows an existing name, then use a trailing underscore _
-Example: 
+**1. If the var or fn name shadows an existing name, then use a trailing underscore _**
+
 ```solidity
 uint256 public someNumber;
 
@@ -249,7 +252,7 @@ function constructor(uint256 someNumber_) {
 }
 ```
 
-2. If the var or fn is of visibility private or internal, use a preceding _
+**2. If the var or fn is of visibility private or internal, use a preceding _**
 
 ```solidity
 uint256 internal _internalVar;
@@ -257,8 +260,6 @@ uint256 internal _internalVar;
 function _internalCheck() internal {}
 }
 ```
-
-
 
 ### Compact Strings
 
