@@ -17,28 +17,28 @@
 
 ### Notes on Testing: (for discussion with Richie)
 
-#### Unit Testing
+### Unit Testing
 
 Should be isolated to a specific code path/failure mode within a single function in a single contract. For each function:
 • Test each failure mode in a dedicated test
 • Test each code path in a dedicated test
 • Perform before and after assertions of **ALL** affected states
 
-#### Fuzz Testing
+### Fuzz Testing
 
 Test arithmetic calculations and edge cases - for successful code paths that manipulate state in some way or perform calculations.
 
 - Functions that involve arithemetic calculations should be fuzzed, as opposed to using a specific "well-behaved" value when testing.
 - Expose any rounding errors, and edge cases due to unexpected values.
 
-#### Invariant Testing
+### Invariant Testing
 
 Define mathematical (logical) conditions/relationships; these are conditions that should always be true, no matter what.
 
 - If these are ever wrong, it is a critical issue.
 - For example, total supply of fyTokens for a vault = sum of all minted by users.
 
-#### Economic Testing
+### Economic Testing
 
 Objective is to expose any (mis)understandings/communications between development and business teams.
 
@@ -46,7 +46,7 @@ Objective is to expose any (mis)understandings/communications between developmen
 - Perform multiple full end to end simulations.
 - Compare ending state with expected values from business team.
 
-#### Integration Testing
+### Integration Testing
 
 - Utilise a Tenderly fork of mainnet.
 - Assert all state changes, across all contracts that are affected.
