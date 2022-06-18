@@ -15,7 +15,7 @@
 - Consider inviting persons outside the smart contract team (i.e. front-end) or non devs (business, marketing, etc) when demoing a new feature or an important change.
 - Commits should be clearly and descriptively titled.
 
-### Notes on Testing: (for discussion with Richie)
+## Notes on Testing: (for discussion with Richie)
 
 ### Unit Testing
 
