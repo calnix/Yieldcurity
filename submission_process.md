@@ -98,6 +98,7 @@ Objective is to expose any (mis)understandings/communications between developmen
 ```
 
 ## For Reviewers
+> Consider using [Github Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) VS code extension
 
 The implementer is only the first line of defense. As a reviewer, confirm that the implementer followed the Yieldcurity principals (test-per-state-transition, test-per-revert, fuzz test, and integration test). Review the documentation and ensure the implementation matches the documented behavior. If it does not, touch base with the implementer and confirm what needs to be updated.
 
@@ -105,7 +106,12 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
 - Ideally the review should be completed within 3 days of being notified (faster if priority tagged).
 - Refer to the [Yield smart contract code quality standards](/yieldcurity_standard.md) code quality standards.
 
-> Consider using [Github Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) VS code extension
+#### Make note of the kinds of variables that affect the feature:
+
+- User input
+- Existing state
+- Other protocols
+- Time
 
 ### General guidelines
 
@@ -127,12 +133,5 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
     - Are all important edge cases and states being tested?
     - For bug fixes, is there a new test that would have caught the bug?
     - If there are any issues that should hold up merge, mark the PR as Changes Requested.
-
-#### Make note of the kinds of variables that affect the feature:
-
-- User input
-- Existing state
-- Other protocols
-- Time
 
 > Other references: see [Code](/yieldcurity_standard.md#code), [Contract](/yieldcurity_standard.md#contract), and [DeFi](/yieldcurity_standard.md#defi) checklists.
