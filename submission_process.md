@@ -83,12 +83,19 @@ Objective is to expose any (mis)understandings/communications between developmen
 
 ## 3. Final approval and merging of PR
 
-##### The following must be completed by the code author before merging PR:
+### The following must be completed by the code author before merging PR:
 
 - Address any comments or changes requested, be sure to mark comments as resolved.
 - Notify reviewers if any changes are made to obtain final approval.
 - Must have at least 1 approval prior to merge.
 - Merge PR and close related Github issue.
+
+```
+**For discussion with Richie:**
+- only tech lead should be able to merge; if unavailable, provide written permission.
+- use of (branch protections)[https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches]
+- else developers can use feature branch to unblock any code necessary.
+```
 
 ## For Reviewers
 
@@ -99,13 +106,6 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
 - Refer to the [Yield smart contract code quality standards](/yieldcurity_standard.md) code quality standards.
 
 > Consider using [Github Pull Requests and Issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github) VS code extension
-
-#### Make note of the kinds of variables that affect the feature:
-
-- User input
-- Existing state
-- Other protocols
-- Time
 
 ### General guidelines
 
@@ -128,4 +128,11 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
     - For bug fixes, is there a new test that would have caught the bug?
     - If there are any issues that should hold up merge, mark the PR as Changes Requested.
 
-- Other references: see [Code](/yieldcurity_standard.md#code), [Contract](/yieldcurity_standard.md#contract), and [DeFi](/yieldcurity_standard.md#defi) checklists.
+#### Make note of the kinds of variables that affect the feature:
+
+- User input
+- Existing state
+- Other protocols
+- Time
+
+> Other references: see [Code](/yieldcurity_standard.md#code), [Contract](/yieldcurity_standard.md#contract), and [DeFi](/yieldcurity_standard.md#defi) checklists.

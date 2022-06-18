@@ -16,7 +16,7 @@ Please delete options that are not relevant.
 ### Dependencies
 > List all libraries and imports utilized, e.g. Ownable.sol from OZ
 
-### Externalities 
+### Externalities
 > List all external (to this PR) contracts that are interacted with - within Yield ecosystem and without.
 
 > _Note to Reviewer: Examine every component the feature may touch. Then go back through excluded components and ensure they cannot be affected._
