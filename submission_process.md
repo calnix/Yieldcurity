@@ -6,9 +6,9 @@
 - PR should have a small, well-defined scope, complimented with a verbose description.
 - Code author to complete the PR submission template.
 - Include the following reports:
-    - [Foundry gas reports](https://book.getfoundry.sh/forge/gas-reports.html). If updating pre-existing code, please include both before and after reports.
-    - [Slither](https://github.com/crytic/slither).
-    - [SMTChecker](https://docs.soliditylang.org/en/latest/smtchecker.html) or other analysis if conducted.
+    - [Foundry gas reports](https://book.getfoundry.sh/forge/gas-reports.html). If updating pre-existing code, please include both before and after reports
+    - [Slither](https://github.com/crytic/slither)
+    - [SMTChecker](https://docs.soliditylang.org/en/latest/smtchecker.html) or other analysis if conducted
 - Include link to recorded video walkthrough.
 - Assign a priority tag to the PR if it needs to be done faster than 3 days.
 - Assign reviewers and notify them directly (via Slack).
