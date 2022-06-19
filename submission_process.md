@@ -135,3 +135,22 @@ The implementer is only the first line of defense. As a reviewer, confirm that t
     - If there are any issues that should hold up merge, mark the PR as Changes Requested.
 
 > Other references: see [Code](/yieldcurity_standard.md#code), [Contract](/yieldcurity_standard.md#contract), and [DeFi](/yieldcurity_standard.md#defi) checklists.
+
+# 4. Post-deployment
+
+## Critical Systems Monitoring
+
+Perform automated checks against deployed contracts
+
+- Use automated monitoring for any “suspicious” behaviour against contracts (Tenderly, OZ Defender)
+- Use Pager Duty for critical alerts, web hooks for informational alerts
+- Use cron jobs for invariant monitoring
+    - Ensure system logics remained unchanged
+    - Use atomic “health checker” contracts with view functions to check invariants
+
+## Mainnet Transactions
+
+Safely interact with your deployed contracts
+
+- Simulate mainnet transactions, asserting resulting state on testnet or private fork before executing them on mainnet
+- Especially true for administrative operations
